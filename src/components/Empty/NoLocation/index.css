@@ -1,0 +1,18 @@
+.no_location_view {
+  flex: 1;
+}
+
+.no_location_view img {
+  width: 240px;
+  object-fit: contain;
+}
+
+.no_location_view .description {
+  color: var(--color-text);
+  line-height: 24px;
+  font-family: Yellix-Medium, serif;
+  font-size: 16px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}

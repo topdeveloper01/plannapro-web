@@ -1,0 +1,36 @@
+.auth-form .forgot-pass {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.auth-form .forgot-pass-btn {
+  font-size: 16px;
+  font-family: Yellix-SemiBold;
+  color: var(--color-red1);
+  cursor: pointer;
+}
+
+.auth-bottom-link {
+  margin-top: 40px;
+}
+
+.auth-bottom-link .text {
+  font-size: 16px;
+  font-family: Yellix-SemiBold;
+  color: var(--color-text);
+  margin-right: 4px;
+}
+
+.auth-bottom-link .btn {
+  font-size: 16px;
+  font-family: Yellix-SemiBold;
+  color: var(--color-cyan2);
+  cursor: pointer;
+}
+
+.cancel-btn {
+  font-size: 16px;
+  font-family: Yellix-SemiBold;
+  color: var(--color-text);
+  cursor: pointer;
+}

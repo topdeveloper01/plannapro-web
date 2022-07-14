@@ -1,0 +1,27 @@
+.confirm-modal .content {
+    width: calc(100vw - 30px);
+    max-width: 450px;
+    padding: 30px 20px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.confirm-modal .content h2{
+    font-size: 16px;
+    font-family: Yellix-SemiBold, serif;
+    color: var(--color-text);
+}
+
+.confirm-modal .content .yes_btn{
+    font-size: 16px;
+    font-family: Yellix-SemiBold, serif;
+    color: var(--color-cyan2);
+    margin-right: 20px;
+}
+
+.confirm-modal .content .no_btn{
+    font-size: 16px;
+    font-family: Yellix-SemiBold, serif;
+    color: var(--color-gray7);
+    margin-left: 20px;
+}
