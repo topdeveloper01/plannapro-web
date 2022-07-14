@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Svg_checked from '../../assets/svgs/blog/checkbox_selected.svg';
-import Svg_unchecked from '../../assets/svgs/blog/checkbox_unselected.svg';
+import Svg_checked from '../../assets/images/icons/checkbox_selected.svg';
+import Svg_unchecked from '../../assets/images/icons/checkbox_unselected.svg';
 
 const CheckBoxBtn = ({ checked, onClick }) => {
   return (

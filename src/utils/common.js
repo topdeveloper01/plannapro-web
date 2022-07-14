@@ -1,4 +1,3 @@
-import { Config } from '../constants';
 import moment from 'moment';
 
 // eslint-disable-next-line no-unused-vars

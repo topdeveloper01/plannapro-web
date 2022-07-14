@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Svg_checked from '../../assets/svgs/blog/radio_selected.svg';
-import Svg_unchecked from '../../assets/svgs/blog/radio_unselected.svg';
+import Svg_checked from '../../assets/images/icons/radio_selected.svg';
+import Svg_unchecked from '../../assets/images/icons/radio_unselected.svg';
 
 const RadioBtn = ({ disabled, checked, onClick }) => {
   return (

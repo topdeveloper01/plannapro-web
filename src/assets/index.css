@@ -1,123 +1,121 @@
 @font-face {
-  font-family: 'Yellix-Black';
-  src: url(../assets/fonts/Yellix-Black.ttf) format('truetype');
+  font-family: 'Lora-Regular';
+  src: url(../assets/fonts/Lora-Regular.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Yellix-BlackItalic';
-  src: url(../assets/fonts/Yellix-BlackItalic.ttf) format('truetype');
+  font-family: 'Lora-Italic';
+  src: url(../assets/fonts/Lora-Italic.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Yellix-Bold';
-  src: url(../assets/fonts/Yellix-Bold.ttf) format('truetype');
+  font-family: 'Lora-Medium';
+  src: url(../assets/fonts/Lora-Medium.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Yellix-BoldItalic';
-  src: url(../assets/fonts/Yellix-BoldItalic.ttf) format('truetype');
+  font-family: 'Lora-MediumItalic';
+  src: url(../assets/fonts/Lora-MediumItalic.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Yellix-ExtraBold';
-  src: url(../assets/fonts/Yellix-ExtraBold.ttf) format('truetype');
+  font-family: 'Lora-Semibold';
+  src: url(../assets/fonts/Lora-SemiBold.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Yellix-ExtraBoldItalic';
-  src: url(../assets/fonts/Yellix-ExtraBoldItalic.ttf) format('truetype');
+  font-family: 'Lora-SemiboldItalic';
+  src: url(../assets/fonts/Lora-SemiBoldItalic.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Yellix-Light';
-  src: url(../assets/fonts/Yellix-Light.ttf) format('truetype');
+  font-family: 'Lora-Bold';
+  src: url(../assets/fonts/Lora-Bold.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Yellix-LightItalic';
-  src: url(../assets/fonts/Yellix-LightItalic.ttf) format('truetype');
+  font-family: 'Lora-BoldItalic';
+  src: url(../assets/fonts/Lora-BoldItalic.ttf) format('truetype');
+}
+
+/*    */
+@font-face {
+  font-family: 'SemplicitaPro-Italic';
+  src: url(../assets/fonts/SemplicitaPro-Italic.otf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Yellix-Medium';
-  src: url(../assets/fonts/Yellix-Medium.ttf) format('truetype');
+  font-family: 'SemplicitaPro-Light';
+  src: url(../assets/fonts/SemplicitaPro-Light.otf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Yellix-MediumItalic';
-  src: url(../assets/fonts/Yellix-MediumItalic.ttf) format('truetype');
+  font-family: 'SemplicitaPro-LtIt';
+  src: url(../assets/fonts/SemplicitaPro-LtIt.otf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Yellix-Regular';
-  src: url(../assets/fonts/Yellix-Regular.ttf) format('truetype');
+  font-family: 'SemplicitaPro-Medium';
+  src: url(../assets/fonts/SemplicitaPro-Medium.otf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Yellix-SemiBold';
-  src: url(../assets/fonts/Yellix-SemiBold.ttf) format('truetype');
+  font-family: 'SemplicitaPro-MedIt';
+  src: url(../assets/fonts/SemplicitaPro-MedIt.otf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Yellix-Thin';
-  src: url(../assets/fonts/Yellix-Thin.ttf) format('truetype');
+  font-family: 'SemplicitaPro-Semibold';
+  src: url(../assets/fonts/SemplicitaPro-Semibold.otf) format('opentype');
 }
+
+@font-face {
+  font-family: 'SemplicitaPro-SemibdIt';
+  src: url(../assets/fonts/SemplicitaPro-SemibdIt.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SemplicitaPro-Bold';
+  src: url(../assets/fonts/SemplicitaPro-Bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SemplicitaPro-BoldItalic';
+  src: url(../assets/fonts/SemplicitaPro-BoldItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SemplicitaPro';
+  src: url(../assets/fonts/SemplicitaPro.otf) format('opentype');
+}
+
 
 :root {
   --color-transparent: 'transparent';
-  --color-background: #fafafa;
+  --color-background: #ffffff;
   --color-darkerBackground: #ededed;
   --color-greyBackground: #f5f5f5;
-  --color-text: #222222;
-  --color-placeholder: #595959;
-  --color-whitePrimary: #ffffff;
-  --color-blackPrimary: #000000;
-  --color-btnPrimary: #23cbd8;
-  --color-disabled: #c9d6df;
-  --color-blackTransparent6: 'rgba(0; 0; 0; 0.6)';
-  --color-backgroundTransparent3: 'rgba(225; 225; 225; 0.3)';
-  --color-backgroundTransparent4: 'rgba(225; 225; 225; 0.4)';
-  --color-backgroundTransparent5: 'rgba(225; 225; 225; 0.5)';
-  --color-backgroundTransparent6: 'rgba(225; 225; 225; 0.6)';
-  --color-backgroundTransparent7: 'rgba(225; 225; 225; 0.7)';
-  --color-backgroundTransparent8: 'rgba(225; 225; 225; 0.8)';
-  --color-primaryTransparent8: 'rgba(34; 173; 196; 0.8);';
-  --color-inactiveTintColor: #373a3f;
-  --color-backgroundColor: #f2f7f9;
-  --color-listBorderColor: #d3e0e5;
-  --color-primary: #22adc4;
-  --color-secondary: #32db64;
+
+  --color-text: #2E3F57;
+  --color-placeholder: #BFC0C4;
+  --color-primary: #3AABB0;
+  --color-secondary: #81E2E6;
+  --color-red1: #F1364E;
+
   --color-anger: #f53d3d;
   --color-light: #f4f4f4;
   --color-dark: #222;
   --color-black: #000;
   --color-white: #fff;
   --color-red: #f00;
-  --color-gray1: #454b4c;
-  --color-gray2: #6a6a6a;
-  --color-gray3: #8c9799;
-  --color-gray4: #737373;
-  --color-gray5: #d5d4e0;
-  --color-gray6: #e9e9f7;
-  --color-gray7: #aaa8bf;
-  --color-gray8: #fafafc;
-  --color-gray9: #f6f6f9;
-  --color-green1: #00db16;
-  --color-cyan1: #21adc4;
-  --color-cyan2: #23cbd8;
-  --color-cyan3: #23dee2;
-  --color-red1: #f55a00;
-  --color-red2: #00c22d;
-  --color-blue1: #9900ff;
-  --color-alertError: #cc1c4e;
-  --color-alertSuccess: #1dd890;
-  --color-alertWarning: #f4e637;
-  --color-warning: #f4be38;
-  --color-alertInfo: #109df7;
-  --color-alertNeutral: #7850dd;
-  --color-socialFacebook: #3b5998;
-  --color-socialTwitter: #00aced;
+
+  --color-gray1: #6C6C6C;
+  --color-gray2: #595E66;
+  --color-gray3: #BFC0C4;
+  --color-gray4: #EFEFEF;
+  --color-gray5: #EDF9FA;
 }
+
 
 iframe {
   display: none;
@@ -217,40 +215,6 @@ body {
   width: 100%;
 }
 
-.bg-cover {
-  background-repeat: no-repeat !important;
-  background-position: 50% !important;
-  background-size: cover !important;
-}
-
-.bg-theme-color-light {
-  background-color: rgba(66, 133, 244, 0.04) !important;
-}
-
-.overlay-dark {
-  transition: all 0.2s ease;
-}
-
-.overlay-dark:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 0;
-  /*opacity: .2;*/
-  /*background-color: black;*/
-}
-
-.overlay-dark > *,
-.overlay-light > * {
-  z-index: 1;
-  position: relative;
-}
-
 .btn-style {
   cursor: pointer;
 }
@@ -293,16 +257,6 @@ body {
 
 .error-ok-btn {
   font-size: 14px !important;
-}
-
-.lds-ellipsis div {
-  background: #23cbd8 !important;
-  width: 9px !important;
-  height: 9px !important;
-}
-
-.ptr__pull-down--pull-more div p {
-  display: none;
 }
 
 .hide-sm {

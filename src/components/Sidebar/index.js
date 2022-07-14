@@ -6,24 +6,17 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'react-grid-system';
-import { OutlineBtn, MainBtn } from '../Buttons';
-import Cashback from './Cashback';
 import { toggleSideBar } from '../../store/actions/app';
 import './index.css';
 import { ROUTES_NAMES } from '../../constants';
-import { getImageFullURL } from '../../utils/common';
-import Svg_orders from '../../assets/svgs/sidebar/orders.svg';
-import Svg_favorites from '../../assets/svgs/sidebar/favorites.svg';
-import Svg_chat from '../../assets/svgs/sidebar/chat_inactive.svg';
 import { confirmAlert } from 'react-confirm-alert';
 import { logout } from '../../store/actions/auth';
 
 const Sidebar = (props) => {
-  const { isSidebarOpened, toggleSideBar, user, isLoggedIn } = props;
+  const { isSidebarOpened, toggleSideBar, isLoggedIn } = props;
   const navigate = useNavigate();
   const { t } = useTranslation();
   const toggleDrawer = (event) => {
@@ -95,76 +88,6 @@ const Sidebar = (props) => {
       onClick={toggleDrawer}
       onKeyDown={toggleDrawer}
       className={'app-sidebar'}>
-      {isLoggedIn ? (
-        <div className={'align-col-middle'}>
-          <div className={'align-row-start user-info'}>
-            <img src={getImageFullURL(user.photo)} />
-            <div className={'align-start flex_1 pl-10'}>
-              <h2>{user.full_name}</h2>
-              <Link to={ROUTES_NAMES.profile}>{t('sidebar.view_profile')}</Link>
-            </div>
-            <Cashback value={1029} />
-          </div>
-          <List className={'w100'}>
-            <ListItem
-              button
-              className={'list-btn'}
-              onClick={(e) => {
-                e.preventDefault();
-                goScreen(t('sidebar.orders'));
-              }}>
-              <img src={Svg_orders} className={'pr1'} />
-              <ListItemText primary={t('sidebar.orders')} />
-            </ListItem>
-            <ListItem
-              button
-              className={'list-btn'}
-              onClick={(e) => {
-                e.preventDefault();
-                goScreen(t('sidebar.favorites'));
-              }}>
-              <img src={Svg_favorites} className={'pr1'} />
-              <ListItemText primary={t('sidebar.favorites')} />
-            </ListItem>
-            <ListItem
-              button
-              className={'list-btn'}
-              onClick={(e) => {
-                e.preventDefault();
-                goScreen(t('sidebar.social'));
-              }}>
-              <img src={Svg_chat} className={'pr1'} />
-              <ListItemText primary={t('sidebar.chat')} />
-              <div className={'new_msg_tag'}>3 {t('sidebar.new_messages')}</div>
-            </ListItem>
-          </List>
-        </div>
-      ) : (
-        <Container fluid className={'drawer-body'}>
-          <Row>
-            <Col xs={12} sm={12} md={6} style={{paddingBottom: 10}}>
-              <OutlineBtn
-                title={t('sidebar.create_account')}
-                style={{ height: 48 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate(ROUTES_NAMES.login + '?view=register');
-                }}
-              />
-            </Col>
-            <Col xs={12} sm={12} md={6}>
-              <MainBtn
-                title={t('sidebar.login')}
-                style={{ height: 48 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate(ROUTES_NAMES.login + '?view=login');
-                }}
-              />
-            </Col>
-          </Row>
-        </Container>
-      )}
       {isLoggedIn && <Divider />}
       <List>
         {(isLoggedIn ? USER_MENUS : GUEST_MENUS).map((text) => (

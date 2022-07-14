@@ -1,7 +1,6 @@
 import AuthService from '../../services/apiAuth';
 import { ApiFactory, Storage } from '../../services';
 import { ACTION_TYPES } from '../../constants';
-import { getWebPushToken } from '../../services/pushWeb';
 
 const getLoggedInUserData = () => {
   return new Promise((resolve, reject) => {
@@ -89,81 +88,6 @@ export const setAsLoggedIn = () => async (dispatch) => {
 };
 
 
-
-export const updateProfileDetails = (user) => async dispatch => {
-  return new Promise((resolve, reject) => {
-    AuthService.updateProfile({
-      full_name: user.full_name,
-      username: user.username,
-      email: user.email,
-      phone: user.phone,
-      photo: user.photo,
-      gender: user.gender,
-      birthday: user.birthday, 
-    })
-      .then(async ({ data }) => {
-        await dispatch({
-          type: ACTION_TYPES.APP_SET_USER_DATA,
-          payload: data.user
-        });
-        resolve(data.user);
-      }, reject);
-  });
-};
-
- 
-export const legacyLogin = (token) => async (dispatch) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const device = {
-        token: getWebPushToken()
-      };
-
-      ApiFactory.post(
-        'login/legacy',
-        { device },
-        {
-          headers: {
-            Authorization: token
-          }
-        }
-      ).then(
-        async (response) => {
-          const { token, verified_by_mobile } = response.data;
-          Storage.setAppToken(token);
-
-          const user = await getLoggedInUserData();
-          dispatch({
-            type: ACTION_TYPES.APP_SET_USER_DATA,
-            payload: user
-          });
-          dispatch({
-            type: ACTION_TYPES.APP_SET_HAS_VERIFIED_PHONE,
-            payload: !!verified_by_mobile
-          });
-
-          resolve(user);
-        },
-        async (e) => {
-          reject(e);
-        }
-      );
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-export const register = (user) => () => {
-  return new Promise((resolve, reject) => {
-    try {
-      const device = { token: getWebPushToken() };
-      AuthService.register({ ...user, device }).then(resolve, reject);
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
  
 export const logout = () => async (dispatch) => {
   try {

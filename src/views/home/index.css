@@ -1,0 +1,34 @@
+.calendar-container {
+    max-width: 100vw;
+}
+
+
+@media (max-width: 1440px) {
+    .calendar-container {
+        width: 1200px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calendar-container {
+        width: 1024px;
+    }
+}
+
+@media (max-width: 992px) {
+    .calendar-container {
+        width: 860px;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-container {
+        width: 740px;
+    }
+}
+
+@media (max-width: 576px) {
+    .calendar-container {
+        width: 100%;
+    }
+}

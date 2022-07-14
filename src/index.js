@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NextApp from './NextApp';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './localisations';
 
 ReactDOM.render(
   <React.StrictMode>
-    <NextApp />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

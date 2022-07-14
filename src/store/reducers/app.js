@@ -1,5 +1,4 @@
 import { ACTION_TYPES } from '../../constants';
-import { OrderType_Delivery, VSort_Title } from '../../constants/config';
 
 const initialState = {
   isLoggedIn: false,

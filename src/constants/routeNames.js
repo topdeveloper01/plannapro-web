@@ -4,6 +4,7 @@ const ROUTES_NAMES = {
   about: '/about',
   downloadApp: '/download-app',
   terms: '/terms',
+  privacy: '/privacy',
   profile: '/profile',
 };
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AuthBtn } from '../../../components/Buttons';
-import { AuthInput } from '../../../components/Inputs';
-import Spacing from '../../../components/Spacing';
-import { PrintLog } from '../../../utils/common';
+import { AuthBtn } from '../../components/Buttons';
+import { AuthInput } from '../../components/Inputs';
+import Spacing from '../../components/Spacing';
+import { PrintLog } from '../../utils/common';
 import './index.css';
-import { ROUTES_NAMES } from '../../../constants';
+import { ROUTES_NAMES } from '../../constants';
 
 const RegisterForm = ({ onChangeView }) => {
   const { t } = useTranslation();

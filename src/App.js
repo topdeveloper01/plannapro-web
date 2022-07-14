@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import App from './containers/App/index';
+import AppContainer from './containers';
 import store from './store';
 import './assets/index.css';
 import './assets/spacing.css';
 import './assets/fontsize.css';
 
-const NextApp = () => (
+const App = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <AppContainer />
     </BrowserRouter>
   </Provider>
 );
-export default NextApp;
+export default App;

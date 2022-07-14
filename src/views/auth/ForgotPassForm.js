@@ -2,15 +2,15 @@ import React, {  useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AuthBtn } from '../../../components/Buttons';
-import { AuthInput } from '../../../components/Inputs';
-import Spacing from '../../../components/Spacing';
-import { validateEmailAddress } from '../../../utils/common';
+import { AuthBtn } from '../../components/Buttons';
+import { AuthInput } from '../../components/Inputs';
+import Spacing from '../../components/Spacing';
+import { validateEmailAddress } from '../../utils/common';
 import './index.css';
-import { ROUTES_NAMES } from '../../../constants';
+import { ROUTES_NAMES } from '../../constants';
 import { confirmAlert } from 'react-confirm-alert';
-import apiFactory from '../../../services/apiFactory';
-import { Storage } from '../../../services';
+import apiFactory from '../../services/apiFactory';
+import { Storage } from '../../services';
 
 const ForgotPassForm = ({ onChangeView }) => {
   const { t } = useTranslation();

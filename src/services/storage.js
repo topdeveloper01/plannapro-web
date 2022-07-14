@@ -1,5 +1,4 @@
 import Cookies from 'universal-cookie';
-import { Config } from '../constants';
 import { createUUID } from '../utils/common';
 
 const cookies = new Cookies();

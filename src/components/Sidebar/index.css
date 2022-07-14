@@ -55,14 +55,6 @@
   margin-bottom: 10px;
 }
 
-.drawer-apps .badge-ios {
-  background-image: url('../../assets/svgs/home/app_store.svg');
-}
-
-.drawer-apps .badge-android {
-  background-image: url('../../assets/svgs/home/googleplay.svg');
-}
-
 .app-sidebar .cashback-info {
   background-color: var(--color-text);
   border-radius: 8px;

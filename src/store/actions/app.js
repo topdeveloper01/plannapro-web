@@ -1,7 +1,5 @@
 import { ACTION_TYPES } from '../../constants';
 import apiFactory from '../../services/apiFactory';
-import { setLanguage } from '../../localisations';
-import { Storage } from '../../services';
 
 export const toggleSideBar = (payload) => {
   return { type: ACTION_TYPES.APP_TOGGLE_SIDE_BAR, payload: payload };
