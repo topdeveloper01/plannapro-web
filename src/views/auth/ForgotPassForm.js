@@ -2,7 +2,7 @@ import React, {  useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AuthBtn } from '../../components/Buttons';
+import { MainBtn } from '../../components/Buttons';
 import { AuthInput } from '../../components/Inputs';
 import Spacing from '../../components/Spacing';
 import { validateEmailAddress } from '../../utils/common';
@@ -91,7 +91,7 @@ const ForgotPassForm = ({ onChangeView }) => {
         }}
       />
       <Spacing height={32} />
-      <AuthBtn
+      <MainBtn
         isLoading={isLoading}
         title={t('confirm')}
         onClick={onSubmit}

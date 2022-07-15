@@ -1,15 +1,13 @@
 import React from 'react';
 import './index.css';
-import { Menu2Outline } from '@styled-icons/evaicons-outline';
-import { Theme } from '../../assets';
+// import { Menu2Outline } from '@styled-icons/evaicons-outline';
+// import { Theme } from '../../assets';
 import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleSideBar } from '../../store/actions/app';
 
 const Header = ({ headerClass, toggleSideBar,  hasBorderBottom = false }) => {
-
-
   return (
     <div
       className={
@@ -20,30 +18,32 @@ const Header = ({ headerClass, toggleSideBar,  hasBorderBottom = false }) => {
       <div className={'align-row-start left-side'}>
       </div>
       <div className={'right-side'}>
-        <Button
-          className={'signinBtn'}
-          onClick={(e) => {
-            e.preventDefault();
-            toggleSideBar();
-          }}>
-          Sign up/Login
-        </Button>
-        <Button
-          className={'signinBtn'}
-          onClick={(e) => {
-            e.preventDefault();
-            toggleSideBar();
-          }}>
-          Become a Pro
-        </Button>
-        <Button
-          className={'drawerBtn'}
-          onClick={(e) => {
-            e.preventDefault();
-            toggleSideBar();
-          }}>
-          <Menu2Outline color={Theme.colors.text} size={28} />
-        </Button>
+        <div className={'align-middle'}>
+          <Button
+            className={'signin-btn'}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleSideBar();
+            }}>
+            Sign up/Login
+          </Button>
+          <Button
+            className={'pro-register-btn'}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleSideBar();
+            }}>
+            Become a Pro
+          </Button>
+        </div>
+        {/*<Button*/}
+        {/*  className={'drawerBtn'}*/}
+        {/*  onClick={(e) => {*/}
+        {/*    e.preventDefault();*/}
+        {/*    toggleSideBar();*/}
+        {/*  }}>*/}
+        {/*  <Menu2Outline color={Theme.colors.text} size={28} />*/}
+        {/*</Button>*/}
       </div>
     </div>
   );

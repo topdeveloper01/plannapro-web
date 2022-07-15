@@ -9,17 +9,8 @@
   box-shadow: none !important;
 }
 
-.Mui-disabled {
-  color: var(--color-gray6) !important;
-}
-
-.auth-btn {
-  background-color: var(--color-cyan2) !important;
-  color: white;
-}
-
-.auth-btn svg {
-  color: white;
+.css-sghohy-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+  background-color: rgba(0, 0, 0, 0.12) !important;
 }
 
 .main-btn {

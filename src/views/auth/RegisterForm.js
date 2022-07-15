@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AuthBtn } from '../../components/Buttons';
+import { MainBtn } from '../../components/Buttons';
 import { AuthInput } from '../../components/Inputs';
 import Spacing from '../../components/Spacing';
 import { PrintLog } from '../../utils/common';
@@ -42,7 +42,7 @@ const RegisterForm = ({ onChangeView }) => {
         }}
       />
       <Spacing height={28} />
-      <AuthBtn
+      <MainBtn
         title={t('auth_register.submit')}
         onClick={() => {
           navigate(ROUTES_NAMES.verification);

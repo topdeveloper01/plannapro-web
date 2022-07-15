@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { AuthBtn } from '../../components/Buttons';
+import { MainBtn } from '../../components/Buttons';
 import { AuthInput } from '../../components/Inputs';
 import Spacing from '../../components/Spacing';
 import { login, setAsLoggedIn } from '../../store/actions/auth';
@@ -96,7 +96,7 @@ const LoginForm = (props) => {
         </div>
       </div>
       <Spacing height={32} />
-      <AuthBtn isLoading={loading} title={t('auth_login.submit')} onClick={_login} />
+      <MainBtn isLoading={loading} title={t('auth_login.submit')} onClick={_login} />
       <Spacing height={40} />
       <div className={'center-align auth-bottom-link'}>
         <div className={'text'}>{t('auth_login.dont_have_account')}</div>

@@ -41,39 +41,6 @@
   transform: rotateZ(180deg);
 }
 
-.header .header-logo {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.header .header-logo > img {
-  height: 35px;
-  width: 200px;
-  object-fit: contain;
-}
-
-/* .login-button {
-  width: 140px;
-  margin-right: 20px;
-  z-index: 2;
-} */
-
-.lang-container{
-  margin-left: 20px;
-}
-
-.header .header-logo > .vendor {
-  font-size: 13px;
-  font-family: Yellix-Light, serif;
-  color: white;
-  background-color: var(--color-text);
-  padding: 5px 12px;
-  border-radius: 8px;
-  margin-top: 2px;
-}
-
 .header > div.right-side {
   display: flex;
   justify-content: center;
@@ -81,54 +48,29 @@
   z-index: 1;
 }
 
-.header .user-info img {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
-  margin-right: 10px;
+.right-side   button.signin-btn {
+  font-size: 16px !important;
+  line-height: 25px;
+  font-family: SemplicitaPro-Semibold;
+  color: var(--color-text);
+  padding: 4px 22px;
+  white-space: nowrap;
+  margin-right: 12px;
 }
 
-.header .user-info h2 {
+.right-side  button.pro-register-btn {
+  font-size: 16px !important;
+  line-height: 25px;
+  font-family: SemplicitaPro-Semibold;
   color: var(--color-text);
-  font-size: 18px;
-  font-family: Yellix-SemiBold, serif;
-  margin: 0;
+  padding: 4px 22px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--color-text);
   white-space: nowrap;
 }
 
-.header > div.right-side .cart-btn {
-  margin-left: 40px;
-}
-
-.header > div.right-side .cart-btn img {
-  width: 44px;
-  height: 46px;
-}
-
-.header > div.right-side .divider {
-  margin-left: 40px;
-  margin-right: 40px;
-  height: 36px;
-  width: 2px;
-  background-color: #efefef;
-}
-.header > div.right-side .dropdown {
-  background-color: transparent;
-}
-
 @media screen and (max-width: 768px) {
-  .header .header-logo > img {
-    height: 17.5px;
-    width: 100px;
-    object-fit: contain;
-  }
-
-  .right-side > button {
-    width: 90px !important;
-    margin-right: 10px !important;
-    font-size: 14px !important;
-    margin-right: 10px !important;
-  }
 
   .header .drawerBtn {
     margin-right: 0px;
@@ -141,44 +83,5 @@
 
   .header {
     padding: 18px 5px 8px 5px;
-  }
-}
-
-@media screen and (max-width: 370px) {
-  .dropdown {
-    width: 75px;
-    font-size: 13px;
-  }
-
-  .right-side > button {
-    margin-right: 3px !important;
-    font-size: 12px !important;
-  }
-
-  .drop-btn h1 {
-    font-size: 13px !important;
-    padding-right: 7px;
-  }
-
-  .right-side > button {
-    padding: 6px 10px;
-    width: 73px !important;
-  }
-}
-
-
-@media screen and (max-width: 576px) {
-  .login-button {
-    width: 120px;
-    margin-right: 5px;
-    z-index: 2
-  }
-  .lang-container {
-    margin-left: 0px;
-  }
-  .header > div.right-side .divider {
-    margin-left: 0px;
-    margin-right: 15px;
-    width: 0px;
   }
 }
