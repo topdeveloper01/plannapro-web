@@ -224,7 +224,8 @@ body {
 }
 
 .react-confirm-alert-body {
-  font-family: Yellix-Medium, serif !important;
+  font-size: 18px;
+  font-family: SemplicitaPro-Semibold, serif !important;
   width: 400px !important;
   max-width: calc(100vw - 40px) !important;
   text-align: center !important;
@@ -242,8 +243,8 @@ body {
 }
 
 .react-confirm-alert-button-group > button {
-  background: var(--color-cyan2) !important;
-  font-family: Yellix-Medium, serif !important;
+  background: var(--color-primary) !important;
+  font-family: SemplicitaPro-Semibold, serif !important;
 }
 
 .react-confirm-alert-button-group {

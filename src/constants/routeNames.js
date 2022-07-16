@@ -1,5 +1,8 @@
 const ROUTES_NAMES = {
   home: '/',
+  bookingSlots: 'slots',
+  addPaymentInfo: 'payment',
+  confirmBooking : 'confirm-appointment',
   login: '/login',
   about: '/about',
   downloadApp: '/download-app',

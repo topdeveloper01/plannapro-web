@@ -5,6 +5,7 @@ const initialState = {
   isSidebarOpened: false,
   headerClass: false,
   user: {},
+  slots : []
 };
 
 const app = (state = initialState, action) => {
@@ -17,6 +18,8 @@ const app = (state = initialState, action) => {
       return { ...state, isSidebarOpened: !state.isSidebarOpened };
     case ACTION_TYPES.APP_SET_HEADER_CLASS:
       return { ...state, headerClass: action.payload || false };
+    case ACTION_TYPES.APP_SET_PICKED_SLOTS:
+      return { ...state, slots: action.payload || [] };
     default:
       return state;
   }

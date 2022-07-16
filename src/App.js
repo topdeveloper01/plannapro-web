@@ -6,6 +6,7 @@ import store from './store';
 import './assets/index.css';
 import './assets/spacing.css';
 import './assets/fontsize.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const App = () => (
   <Provider store={store}>

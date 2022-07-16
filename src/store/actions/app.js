@@ -9,6 +9,10 @@ export const setAppHeaderClass = (payload) => {
   return { type: ACTION_TYPES.APP_SET_HEADER_CLASS, payload: payload };
 };
 
+export const setPickedSlots = (payload) => {
+  return { type: ACTION_TYPES.APP_SET_PICKED_SLOTS, payload: payload };
+};
+
 export const setOrderMessageTags = () => (dispatch, getState) => {
   return new Promise((resolve) => {
     apiFactory.get(`orders/get-support-tags`).then(({ data }) => {
