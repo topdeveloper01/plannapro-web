@@ -1,27 +1,43 @@
 .confirm-modal .content {
-    width: calc(100vw - 30px);
-    max-width: 450px;
-    padding: 30px 20px;
-    background-color: white;
-    border-radius: 15px;
+
 }
 
 .confirm-modal .content h2{
-    font-size: 16px;
-    font-family: Yellix-SemiBold, serif;
+    font-size: 24px;
+    font-family: Lora-Bold, serif;
     color: var(--color-text);
+    margin: 8px 0px;
 }
 
-.confirm-modal .content .yes_btn{
-    font-size: 16px;
-    font-family: Yellix-SemiBold, serif;
-    color: var(--color-cyan2);
-    margin-right: 20px;
+.confirm-modal .content p{
+    font-size: 20px;
+    font-family: SemplicitaPro-Medium, serif;
+    color: var(--color-gray1);
+}
+
+.confirm-modal .content hr {
+    width: 100%;
+    border-color: var(--color-gray4) !important;
 }
 
 .confirm-modal .content .no_btn{
-    font-size: 16px;
-    font-family: Yellix-SemiBold, serif;
-    color: var(--color-gray7);
-    margin-left: 20px;
+    width: 200px;
+    height: 44px;
+    font-size: 14px !important;
+    font-family: SemplicitaPro-Medium !important;
+}
+
+.confirm-modal .content .yes_btn{
+    width: 200px;
+    height: 44px;
+    font-size: 14px !important;
+    font-family: SemplicitaPro-Medium !important;
+}
+
+.confirm-modal .MuiPaper-root  {
+    width: calc(100vw - 30px);
+    max-width: 500px;
+    padding: 20px 0px;
+    background-color: white;
+    border-radius: 15px;
 }

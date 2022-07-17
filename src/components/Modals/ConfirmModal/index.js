@@ -2,8 +2,9 @@ import React from 'react';
 import { Dialog } from '@mui/material';
 import PropTypes from 'prop-types';
 import './index.css';
+import { MainBtn, OutlineBtn } from '../../Buttons';
 
-const ConfirmModal = ({ showModal, title, yes, no, onYes, onClose }) => {
+const ConfirmModal = ({ showModal, title, message, yes='Delete', no='Cancel', onYes, onClose }) => {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -14,13 +15,20 @@ const ConfirmModal = ({ showModal, title, yes, no, onYes, onClose }) => {
     <Dialog open={open} className={'align-col-middle w100 modal confirm-modal'}>
       <div className={'align-col-middle content'}>
         <h2>{title}</h2>
-        <div className={'flex_1 align-middle w100 actions mt12'}>
-          <div onClick={onYes} className={'yes_btn'}>
-            {yes}
-          </div>
-          <div onClick={onClose} className={'no_btn'}>
-            {no}
-          </div>
+        <hr/>
+        <p>{message}</p>
+        <div className={'flex_1 align-middle w100 actions mt1'}>
+          <OutlineBtn
+            className={'no_btn'}
+            title={no}
+            onClick={onClose}
+          />
+          <div style={{ width: 10 }}/>
+          <MainBtn
+            className={'yes_btn'}
+            title={yes}
+            onClick={onYes}
+          />
         </div>
       </div>
     </Dialog>
@@ -31,6 +39,7 @@ function arePropsEqual(prevProps, nextProps) {
   return (
     prevProps.showModal === nextProps.showModal &&
     prevProps.title === nextProps.title &&
+    prevProps.message === nextProps.message &&
     prevProps.yes === nextProps.yes &&
     prevProps.no === nextProps.no
   );
@@ -39,6 +48,7 @@ function arePropsEqual(prevProps, nextProps) {
 ConfirmModal.propTypes = {
   showModal: PropTypes.bool,
   title: PropTypes.string,
+  message : PropTypes.string,
   yes: PropTypes.string,
   no: PropTypes.string,
   onYes: PropTypes.func,

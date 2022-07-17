@@ -3,11 +3,10 @@ import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Storage } from '../services';
-import { Header, Footer, Sidebar } from '../components';
+import { Header, Footer } from '../components';
 import AppRoutes from './appRoutes';
 import {  ROUTES_NAMES } from '../constants';
 import {
-  getLoggedInUser,
   setAsLoggedIn
 } from '../store/actions/auth';
 
@@ -52,7 +51,6 @@ const AppContainer = () => {
       {!authRoutes.includes(location.pathname) && (
         <Header/>
       )}
-      {!authRoutes.includes(location.pathname) && <Sidebar/>}
       <AppRoutes/>
       {!authRoutes.includes(location.pathname) && !mapRoutes.includes(location.pathname) && (
         <Footer/>
@@ -63,7 +61,6 @@ const AppContainer = () => {
 
 AppContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
-  getLoggedInUser: PropTypes.func,
 };
 
 const mapStateToProps = ({ app }) => ({
@@ -71,6 +68,5 @@ const mapStateToProps = ({ app }) => ({
 });
 
 export default connect(mapStateToProps, {
-  getLoggedInUser,
   setAsLoggedIn,
 })(AppContainer);

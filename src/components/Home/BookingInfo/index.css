@@ -110,3 +110,28 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.booking-info-view .service-detail .discount_label,
+.booking-info-view .service-detail .discount_value
+{
+    font-size: 14px;
+    line-height: 21px;
+    font-family: SemplicitaPro-Semibold;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.booking-info-view .service-detail .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: var(--color-text);
+}
+
+.booking-info-view .service-detail .package-highlighted {
+    font-size: 14px;
+    line-height: 21px;
+    font-family: SemplicitaPro-Semibold;
+    font-weight: 700;
+    color: var(--color-primary);
+}

@@ -196,6 +196,14 @@ body {
   width: 100%;
 }
 
+.align-row-start-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
 .align-end {
   display: flex;
   justify-content: flex-end;

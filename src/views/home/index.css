@@ -21,6 +21,7 @@
 }
 
 .view-home .calendar-container .calendar-view {
+    justify-content: flex-start;
     width: 66%;
 }
 

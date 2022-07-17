@@ -1,1 +1,6 @@
-export const API_BASE_URL = 'http://localhost:8000/api/';
+const dev = {
+  API_BASE_URL: 'https://api.dev.planna.ai/api',
+  IMG_BASE_URL: 'https://api.dev.planna.ai/api',
+};
+
+export default dev;

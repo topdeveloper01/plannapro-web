@@ -1,110 +1,136 @@
 .booking-done .main {
     max-width: 100vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: bottom;
-    background-image: url('../../assets/images/app/BG.svg');
 }
 
-.calendar-container  {
+.booking-done .content {
     display: flex;
     width: 1400px;
-    background-color: white;
-    box-shadow: 0px 5px 30px rgba(90, 116, 153, 0.15);
-    border-radius: 20px;
 }
 
-.booking-done .calendar-container .info-view {
-    border-right: 2px solid #EFEFEF;
-    width: 34%;
+.booking-done .content .info-view {
+    width: 50%;
 }
 
-.booking-done .calendar-container .calendar-view {
-    width: 66%;
-}
-
-.booking-done .calendar-view .row{
-    display: flex;
-    width: 100%;
-}
-
-.booking-done .calendar-view h5 {
-    font-size: 24px;
-    line-height: 31px;
+.booking-done .content .info-view h3 {
+    font-size: 36px;
+    line-height: 41px;
     color: var(--color-text);
     font-family: Lora-Bold;
     width: 100%;
+    text-align: left;
     margin: 0;
 }
 
-.booking-done .calendar-view .bottom {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+.booking-done .content .info-view h6 {
+    font-size: 20px;
+    line-height: 29px;
+    color: var(--color-gray1);
+    font-family: SemplicitaPro-Semibold;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0;
 }
 
-.booking-done .calendar-view .continue-btn{
-    width: 225px;
-    height: 44px;
-    font-size: 14px !important;
-    font-family: SemplicitaPro-Medium !important;
+.booking-done .content .info-view p {
+    font-size: 17px;
+    line-height: 25px;
+    color: var(--color-gray1);
+    font-family: SemplicitaPro-Medium;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0;
 }
 
-.booking-done .calendar-view .date-picker-view {
-    border-right: 2px solid #EFEFEF;
-    width: 64%;
-}
-
-.booking-done .calendar-view .timeslots {
-    width: 36%;
+.booking-done .content .info-view .universal-link-view {
     justify-content: flex-start;
 }
 
-.booking-done .calendar-view .timeslots p.date{
-    font-family: SemplicitaPro-Semibold;
-    font-style: normal;
+.booking-done .content .info-view .universal-link-view input {
+    height: 46px;
+    width: 380px;
+    padding-left: 14px;
+    outline: none;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: #EFEFEF;
+    border-radius: 8px 0px 0px 8px;
     font-size: 16px;
-    line-height: 24px;
-    color: var(--color-text);
-    text-align: left;
-    width: 100%;
-    padding-left: 20px;
-    margin-top: 12px;
-    margin-bottom: 22px;
+    line-height: 25px;
+    color: var(--color-gray1);
+    font-family: SemplicitaPro-Medium;
 }
 
-.booking-done .calendar-view .timeslots .list{
-    height: 360px;
-    overflow-y: auto;
+.booking-done .content .info-view .universal-link-view .copy-btn {
+    height: 45px;
+    width: 90px;
+    font-size: 14px !important;
+    line-height: 19px !important;
+    font-family: SemplicitaPro-Medium;
+    color: white !important;
+    text-transform: none !important;
+    background-color: var(--color-text) !important;
+    border-radius: 0px 8px 8px 0px !important;
+}
+
+.booking-done .content .apps .desc {
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--color-gray1);
+    font-family: SemplicitaPro-Medium;
+}
+
+.booking-done .content a.home-link {
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-primary);
+    font-family: SemplicitaPro-Semibold;
+    text-decoration: none;
+}
+
+.booking-done .content .img-view {
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.booking-done .content .img-view  img {
+    width: 430px;
+    object-fit: contain;
 }
 
 @media (max-width: 1440px) {
-    .calendar-container  {
+    .booking-done .content {
         width: 1200px;
     }
 }
 
 @media (max-width: 1200px) {
-    .calendar-container  {
+    .booking-done .content {
         width: 1024px;
+    }
+
+    .booking-done .content .img-view  img {
+        width: 320px;
     }
 }
 
 @media (max-width: 992px) {
-    .calendar-container  {
+    .booking-done .content {
         width: 860px;
+    }
+
+    .booking-done .content .img-view  img {
+        width: 270px;
     }
 }
 
 @media (max-width: 768px) {
-    .calendar-container  {
+    .booking-done .content {
         width: 740px;
     }
 }
 
 @media (max-width: 576px) {
-    .calendar-container  {
+    .booking-done .content {
         width: 100%;
     }
 }

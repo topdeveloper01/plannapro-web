@@ -1,21 +1,32 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from '@styled-icons/typicons';
 import './index.css';
-import { setAppHeaderClass } from '../../../store/actions/app';
+import { setAppHeaderClass, setPickedSlots } from '../../../store/actions/app';
 import { Theme } from '../../../assets';
 import { MainBtn, RoundIconBtn, OutlineBtn } from '../../../components/Buttons';
 import { ROUTES_NAMES } from '../../../constants';
 import PickedSlot from '../../../components/Home/PickedSlot';
+import ConfirmModal from '../../../components/Modals/ConfirmModal';
 
 const ConfirmBooking = (props) => {
   const navigate = useNavigate();
+  const [isConfirmModal, showConfirmModal] = useState(false);
+
+  const _targetSlot = useRef(null);
 
   const onContinue = () => {
-    navigate(ROUTES_NAMES.home + ROUTES_NAMES.confirmBooking);
+    navigate(ROUTES_NAMES.bookingDone);
   };
+
+  const onDeleteSlot=(slot) => {
+    console.log('delete slot ', slot)
+    let clone = props.slots.slice(0);
+    clone = clone.filter(s => s != slot);
+    props.setPickedSlots(clone);
+  }
 
   return (
     <div className={'align-col-middle confirm-booking-view'}>
@@ -36,12 +47,15 @@ const ConfirmBooking = (props) => {
           props.slots.map((slot, index) =>
             <PickedSlot
               key={index}
-              slot={slot}
+              slot={{
+                start: slot
+              }}
               onEdit={() => {
 
               }}
               onDelete={() => {
-
+                _targetSlot.current = slot;
+                showConfirmModal(true);
               }}
             />
           )
@@ -60,6 +74,16 @@ const ConfirmBooking = (props) => {
           onClick={onContinue}
         />
       </div>
+      <ConfirmModal
+        showModal={isConfirmModal}
+        title={'Delete Slot'}
+        message={'Are you sure you want to delete this slot?'}
+        onClose={()=> showConfirmModal(false)}
+        onYes={() => {
+          showConfirmModal(false);
+          onDeleteSlot(_targetSlot.current);
+        }}
+      />
     </div>
   );
 };
@@ -67,7 +91,8 @@ const ConfirmBooking = (props) => {
 ConfirmBooking.propTypes = {
   isLoggedIn: PropTypes.bool,
   slots: PropTypes.array,
-  setAppHeaderClass: PropTypes.func
+  setAppHeaderClass: PropTypes.func,
+  setPickedSlots : PropTypes.func
 };
 
 const mapStateToProps = ({ app }) => ({
@@ -77,5 +102,5 @@ const mapStateToProps = ({ app }) => ({
 });
 
 export default connect(mapStateToProps, {
-  setAppHeaderClass
+  setAppHeaderClass, setPickedSlots
 })(ConfirmBooking);
