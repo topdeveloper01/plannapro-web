@@ -29,6 +29,7 @@
 
 .payment-add-view .cancel-btn {
     width: 225px;
+    max-width: calc(50% - 10px);
     height: 44px;
     font-size: 14px !important;
     font-family: SemplicitaPro-Medium !important;
@@ -36,6 +37,7 @@
 
 .payment-add-view .continue-btn {
     width: 225px;
+    max-width: calc(50% - 10px);
     height: 44px;
     font-size: 14px !important;
     font-family: SemplicitaPro-Medium !important;

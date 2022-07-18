@@ -20,7 +20,7 @@ const Home = (props) => {
     <div data-testid="view-home" className={'view-home'}>
       <Seo title={'Planna Pro'}/>
       <div className={'align-col-middle main pt3 pb10'}>
-        <div className={'align-col-middle'}>
+        <div className={'align-col-middle logo-view'}>
           <img src={Svg_logo}/>
         </div>
         <div className={'calendar-container flex_wrap mt5'}>

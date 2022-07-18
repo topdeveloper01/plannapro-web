@@ -1,11 +1,12 @@
 import React from 'react';
 import './index.css';
-// import { Menu2Outline } from '@styled-icons/evaicons-outline';
-// import { Theme } from '../../assets';
+import {Menu} from '@styled-icons/heroicons-outline';
+import { Theme } from '../../assets';
 import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleSideBar } from '../../store/actions/app';
+import Svg_logo from '../../assets/images/app/Logo.svg';
 
 const Header = ({ headerClass, toggleSideBar,  hasBorderBottom = false }) => {
   return (
@@ -16,9 +17,10 @@ const Header = ({ headerClass, toggleSideBar,  hasBorderBottom = false }) => {
         ' ' + headerClass
       }>
       <div className={'align-row-start left-side'}>
+        <img src={Svg_logo} className={'logo'}/>
       </div>
       <div className={'right-side'}>
-        <div className={'align-middle'}>
+        <div className={'align-middle signin-view'}>
           <Button
             className={'signin-btn'}
             onClick={(e) => {
@@ -36,14 +38,14 @@ const Header = ({ headerClass, toggleSideBar,  hasBorderBottom = false }) => {
             Become a Pro
           </Button>
         </div>
-        {/*<Button*/}
-        {/*  className={'drawerBtn'}*/}
-        {/*  onClick={(e) => {*/}
-        {/*    e.preventDefault();*/}
-        {/*    toggleSideBar();*/}
-        {/*  }}>*/}
-        {/*  <Menu2Outline color={Theme.colors.text} size={28} />*/}
-        {/*</Button>*/}
+        <Button
+          className={'hide-sm drawerBtn'}
+          onClick={(e) => {
+            e.preventDefault();
+            toggleSideBar();
+          }}>
+          <Menu color={Theme.colors.text} size={28} />
+        </Button>
       </div>
     </div>
   );

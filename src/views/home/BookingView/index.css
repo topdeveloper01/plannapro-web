@@ -1,5 +1,6 @@
 .booking-view {
     width: 100%;
+    flex: 1;
 }
 
 .booking-view h5 {
@@ -9,6 +10,12 @@
     font-family: Lora-Bold;
     width: 100%;
     margin: 0;
+}
+
+.view-home .calendar-view .row{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .booking-view .bottom {
@@ -50,4 +57,30 @@
 .booking-view .timeslots .list {
     height: 360px;
     overflow-y: auto;
+}
+
+@media (max-width: 992px) {
+    .booking-view .date-picker-view {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #EFEFEF;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        padding-right: 0px !important;
+    }
+
+    .booking-view .timeslots {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-view .timeslots .list {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .booking-view .timeslots p.date {
+        padding-left: 0;
+    }
 }

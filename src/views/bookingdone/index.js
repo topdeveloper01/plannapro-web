@@ -29,16 +29,42 @@ const BookingDone = (props) => {
     <div className={'booking-done'}>
       <Seo title={'Planna Pro'}/>
       <div className={'align-col-middle main pt3 pb10'}>
-        <div className={'align-col-middle'}>
+        <div className={'align-col-middle logo-view'}>
           <img src={Svg_logo}/>
         </div>
         <div className={'content flex_wrap mt5'}>
           <div className={'info-view pl2 pr4 pv3'}>
             <h3>Sent!</h3>
             <h6 className={'mt2'}>We’ll let you know once Cameron has confirmed the appointment.</h6>
-            <p className={'mt4'}>Share the link below with your neighbours for even bigger discounts on services and
+            <p className={'hide-md mt4'}>Share the link below with your neighbours for even bigger discounts on services and
               packages with The
               Conscious Gardening Co.</p>
+            <div className={'show-md align-row-start social mt4'}>
+              <a
+                href="https://www.instagram.com//"
+                rel={'noreferrer'}
+                target="_blank"
+                className={'mr3'}
+              >
+                <img src={Svg_instagram}/>
+              </a>
+              <a
+                href="https://www.facebook.com//"
+                rel={'noreferrer'}
+                target="_blank"
+                className={'mr3'}
+              >
+                <img src={Svg_facebook}/>
+              </a>
+              <a
+                href="https://twitter.com/?lang=en"
+                rel={'noreferrer'}
+                target="_blank"
+                className={'mr3'}
+              >
+                <img src={Svg_twitter}/>
+              </a>
+            </div>
             <div className={'align-middle universal-link-view mt5'}>
               <input value={'planna.pro/theconsciousgardeningco'} editable={false}/>
               <Button
@@ -49,7 +75,10 @@ const BookingDone = (props) => {
                 Copy
               </Button>
             </div>
-            <div className={'align-row-start social mt4'}>
+            <div className={'show-md img-view align-col-middle mv10'}>
+              <img src={Svg_mail}/>
+            </div>
+            <div className={'hide-md align-row-start social mt4'}>
               <a
                 href="https://www.instagram.com//"
                 rel={'noreferrer'}
@@ -94,15 +123,18 @@ const BookingDone = (props) => {
                     <img src={Svg_googleplay}/>
                   </a>
                 </div>
-                <div className={'align-middle desc mt2'}>
+                <div className={'hide-md align-middle desc mt2'}>
                   Available for iOS and Android
                 </div>
               </div>
             </div>
-            <Link to={ROUTES_NAMES.home} className={'home-link'}>Go to Home <ArrowRightShort size={22}
-                                                                                             color={Theme.colors.primary}/></Link>
+            <div className={'align-middle w100 link-wrapper'} >
+              <Link to={ROUTES_NAMES.home} className={'home-link'}>Go to Home <ArrowRightShort size={22}
+                                                                                               color={Theme.colors.primary}/></Link>
+            </div>
+
           </div>
-          <div className={'align-col-middle img-view pl4 pr2 pt5 pb3'}>
+          <div className={'hide-md align-col-middle img-view pl4 pr2 pt5 pb3'}>
             <img src={Svg_mail}/>
           </div>
         </div>

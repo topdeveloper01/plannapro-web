@@ -14,21 +14,28 @@ const ConfirmModal = ({ showModal, title, message, yes='Delete', no='Cancel', on
   return (
     <Dialog open={open} className={'align-col-middle w100 modal confirm-modal'}>
       <div className={'align-col-middle content'}>
-        <h2>{title}</h2>
-        <hr/>
-        <p>{message}</p>
-        <div className={'flex_1 align-middle w100 actions mt1'}>
-          <OutlineBtn
-            className={'no_btn'}
-            title={no}
-            onClick={onClose}
-          />
-          <div style={{ width: 10 }}/>
-          <MainBtn
-            className={'yes_btn'}
-            title={yes}
-            onClick={onYes}
-          />
+        <div className={'align-col-middle w100 title-view pv2 ph2'}>
+          <h2>{title}</h2>
+        </div>
+        <div className={'w100 align-col-middle ph2 pb2'}>
+          <p>{message}</p>
+          <div className={'flex_1 align-middle w100 actions mt1'}>
+            <div className={'flex_1'}>
+              <OutlineBtn
+                className={'no_btn'}
+                title={no}
+                onClick={onClose}
+              />
+            </div>
+            <div style={{ width: 10 }}/>
+            <div className={'flex_1'}>
+              <MainBtn
+                className={'yes_btn'}
+                title={yes}
+                onClick={onYes}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </Dialog>

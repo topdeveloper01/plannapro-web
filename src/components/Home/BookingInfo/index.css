@@ -14,6 +14,7 @@
 }
 
 .booking-info-view .title-view h5 {
+    font-size: 32px;
     margin: 0;
 }
 
@@ -135,3 +136,11 @@
     font-weight: 700;
     color: var(--color-primary);
 }
+
+@media (max-width: 576px) {
+    .booking-info-view .service-detail h5 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+

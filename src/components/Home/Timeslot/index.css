@@ -35,3 +35,14 @@
 .time-slot-item-disabled {
 
 }
+
+@media (max-width: 576px) {
+    .time-slot-item-selected {
+        font-size: 14px !important;
+        line-height: 22px !important;
+    }
+    .time-slot-item-unselected {
+        font-size: 14px !important;
+        line-height: 22px !important;
+    }
+}

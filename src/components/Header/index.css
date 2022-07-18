@@ -3,6 +3,7 @@
   justify-content: space-between;
   padding: 18px 32px 8px 32px;
   height: 80px;
+  border-bottom: 1px solid var(--color-gray4);
 }
 
 .header-bottom-border {
@@ -70,18 +71,38 @@
   white-space: nowrap;
 }
 
+.header img.logo {
+  display: none;
+}
+
+.header .drawerBtn {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
+  .header img.logo {
+    display: inherit;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .header .signin-view {
+    display: none;
+  }
 
   .header .drawerBtn {
+    display: inherit;
     margin-right: 0px;
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
     width: 30px;
+    min-width: 30px;
   }
 
   .header {
-    padding: 18px 5px 8px 5px;
+    padding: 18px 16px 8px 16px;
   }
 }

@@ -58,7 +58,7 @@ const Footer = () => {
           <h5>Where work, works around you.</h5>
           <h6>© 2022 Planna Ltd. All rights reserved.</h6>
         </Grid>
-        <Grid item xs={12} md={6} lg={3} style={{}}>
+        <Grid item xs={6} md={6} lg={3} style={{}}>
           <h4 className="subject">Discover</h4>
           <ul>
             {DISCOVER_LINKS.map((linkItem) => (
@@ -70,7 +70,7 @@ const Footer = () => {
             ))}
           </ul>
         </Grid>
-        <Grid item xs={12} md={6} lg={3} style={{}}>
+        <Grid item xs={6} md={6} lg={3} style={{}}>
           <h4 className="subject">Company</h4>
           <ul>
             {COMPANY_LINKS.map((linkItem) => (
