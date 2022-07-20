@@ -9,6 +9,7 @@ import {  ROUTES_NAMES } from '../constants';
 import {
   setAsLoggedIn
 } from '../store/actions/auth';
+import ScrollToTop from '../components/Common/scrollToTop';
 
 const AppContainer = () => {
   const location = useLocation();
@@ -48,6 +49,7 @@ const AppContainer = () => {
   console.log(isAppLoaded)
   return (
     <>
+      <ScrollToTop />
       {!authRoutes.includes(location.pathname) && (
         <Header/>
       )}

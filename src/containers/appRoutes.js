@@ -20,6 +20,7 @@ const AppRoutes = () => {
           <Route path={ROUTES_NAMES.bookingSlots} element={<BookingView />} />
           <Route path={ROUTES_NAMES.addPaymentInfo} element={<PaymentInfo />} />
           <Route path={ROUTES_NAMES.confirmBooking} element={<ConfirmBooking />} />
+          <Route path={ROUTES_NAMES.editSlot} element={<BookingView isEditSlot={true}/>} />
         </Route>
         <Route exact path={ROUTES_NAMES.bookingDone} element={<BookingDone />} />
         <Route exact path={ROUTES_NAMES.privacy} element={<PrivacyPolicy />} />

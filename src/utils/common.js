@@ -108,3 +108,13 @@ export const openExternalUrl = (url) => {
     // eslint-disable-next-line no-empty
   } catch (error) {}
 };
+
+export const getWeekDays = (date = new Date()) => {
+  let dates = [];
+  let day = date.getDay();
+  for (let i = -day; i < (7 - day); i++) {
+    let tmp = moment(date).add(i, 'days').toDate();
+    dates.push(tmp);
+  }
+  return dates;
+}

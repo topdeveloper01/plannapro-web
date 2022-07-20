@@ -11,19 +11,18 @@
   border-radius: 12px !important;
   text-transform: none !important;
   box-shadow: none !important;
-  border-radius: 12px;
 }
 
 .common-tabs .tab-btn-active {
   flex: 1;
   padding: 0 !important;
   background-color: #d9f3f5 !important;
-  color: var(--color-cyan2);
+  color: var(--color-primary);
 }
 
 .common-tabs .tab-btn-inactive {
   flex: 1;
   padding: 0 !important;
   background-color: white !important;
-  color: var(--color-text);
+  color: white;
 }

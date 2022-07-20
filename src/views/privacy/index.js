@@ -5,7 +5,7 @@ import './index.css';
 
 const PrivacyPolicyMain = () => { 
   return (
-    <div data-testid='view-terms' className={'align-col-middle view-terms'}>
+    <div className={'align-col-middle view-privacy'}>
       <Seo title={''} />
       <div style={{ width: '100%', maxWidth : 800 }}>
         <h1 style={{width: '100%', textAlign: 'left'}}>

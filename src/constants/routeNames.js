@@ -3,6 +3,7 @@ const ROUTES_NAMES = {
   bookingSlots: 'slots',
   addPaymentInfo: 'payment',
   confirmBooking : 'confirm-appointment',
+  editSlot : 'edit-slot',
   bookingDone: '/sent-booking-request',
   login: '/login',
   about: '/about',

@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import { QuestionCircleFill } from '@styled-icons/bootstrap';
+import querystring from 'query-string';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import './index.css';
 import { setPickedSlots } from '../../../store/actions/app';
 import { Timeslot, EventDatePicker } from '../../../components/Home';
-import { Theme } from '../../../assets';
-import { MainBtn } from '../../../components/Buttons';
+import { MainBtn, OutlineBtn } from '../../../components/Buttons';
 import { ROUTES_NAMES } from '../../../constants';
 
 const BookingView = (props) => {
+  const isEditSlot = props.isEditSlot || false;
   const navigate = useNavigate();
+  const location = useLocation();
+  const parsed = querystring.parse(location.search) || {};
   const tmpSlots = [
     '2022-07-14T09:00:37.808Z',
     '2022-07-14T09:15:37.808Z',
@@ -33,17 +35,55 @@ const BookingView = (props) => {
   const [curDate, setCurDate] = useState(new Date());
   const [selectedSlots, setSelectedSlots] = useState([]);
 
+  useEffect(() => {
+    if (isEditSlot && parsed.slot) {
+      let slot = moment(parsed.slot).toDate();
+      setCurDate(slot);
+      setSelectedSlots([parsed.slot]);
+    }
+  }, [parsed.slot]);
+
   const onContinue = () => {
-    props.setPickedSlots(selectedSlots);
-    navigate(ROUTES_NAMES.home + ROUTES_NAMES.addPaymentInfo);
+    if (selectedSlots.length == 0) {
+      return confirmAlert({
+        title: null,
+        message: 'You need to select at least a slot!',
+        closeOnEscape: true,
+        closeOnClickOutside: true,
+        buttons: [
+          {
+            label: 'OK',
+            className: 'error-ok-btn',
+            onClick: () => {
+            }
+          }
+        ]
+      });
+    }
+
+    if (isEditSlot) {
+      let tmp = props.slots.slice(0);
+      let index = tmp.findIndex(s => s == parsed.slot);
+      if (index != -1) {
+        tmp[index] = selectedSlots[0];
+      }
+      props.setPickedSlots(tmp);
+      // navigate(ROUTES_NAMES.home + ROUTES_NAMES.confirmBooking);
+      navigate(-1);
+    } else {
+      props.setPickedSlots(selectedSlots);
+      navigate(ROUTES_NAMES.home + ROUTES_NAMES.addPaymentInfo);
+    }
   };
 
+  console.log('booking view ', selectedSlots)
   return (
     <div className={'align-col-middle booking-view'}>
-      <h5><span>Select up to 5 Time Slots </span><QuestionCircleFill size={20} color={Theme.colors.gray1}/></h5>
-      <div className={'row pv3'}>
+      <div className={'row pb3'}>
         <div className={'date-picker-view pr4'}>
           <EventDatePicker
+            isEditSlot={isEditSlot}
+            initDate={curDate}
             onSelectDate={(date) => {
               setCurDate(date);
             }}
@@ -58,31 +98,37 @@ const BookingView = (props) => {
                 slot={slot}
                 isSelected={selectedSlots.findIndex(s => s == slot) != -1}
                 onSelect={(slot) => {
-                  let tmp = selectedSlots.slice(0);
-                  let index = tmp.findIndex(s => s == slot);
-                  if (index != -1) {
-                    tmp.splice(index, 1);
+                  if (isEditSlot) {
+                    let tmp = [];
+                    tmp.push(slot);
                     setSelectedSlots(tmp);
                   } else {
-                    if (selectedSlots.length < 5) {
-                      // slot.daysofweek = '' + curDate.getDay();
-                      tmp.push(slot);
+                    let tmp = selectedSlots.slice(0);
+                    let index = tmp.findIndex(s => s == slot);
+                    if (index != -1) {
+                      tmp.splice(index, 1);
                       setSelectedSlots(tmp);
                     } else {
-                      return confirmAlert({
-                        title: null,
-                        message: 'You can select up to 5 slots!',
-                        closeOnEscape: true,
-                        closeOnClickOutside: true,
-                        buttons: [
-                          {
-                            label: 'OK',
-                            className: 'error-ok-btn',
-                            onClick: () => {
+                      if (selectedSlots.length < 5) {
+                        // slot.daysofweek = '' + curDate.getDay();
+                        tmp.push(slot);
+                        setSelectedSlots(tmp);
+                      } else {
+                        return confirmAlert({
+                          title: null,
+                          message: 'You can select up to 5 slots!',
+                          closeOnEscape: true,
+                          closeOnClickOutside: true,
+                          buttons: [
+                            {
+                              label: 'OK',
+                              className: 'error-ok-btn',
+                              onClick: () => {
+                              }
                             }
-                          }
-                        ]
-                      });
+                          ]
+                        });
+                      }
                     }
                   }
                 }}
@@ -91,26 +137,49 @@ const BookingView = (props) => {
           </div>
         </div>
       </div>
-      <div className={'flex_1 row bottom'}>
-        <MainBtn
-          isDisabled={selectedSlots.length == 0}
-          className={'continue-btn'}
-          title={'Continue'}
-          onClick={onContinue}
-        />
-      </div>
+      {
+        isEditSlot ?
+          <div className={'flex_1 row bottom'}>
+            <OutlineBtn
+              className={'cancel-btn'}
+              title={'Cancel'}
+              onClick={() => {
+                navigate(-1)
+                // navigate(ROUTES_NAMES.home + ROUTES_NAMES.confirmBooking)
+              }}
+            />
+            <div style={{ width: 10 }}/>
+            <MainBtn
+              className={'save-btn'}
+              title={'Save'}
+              onClick={onContinue}
+            />
+          </div>
+          :
+          <div className={'flex_1 row bottom'}>
+            <MainBtn
+              isDisabled={selectedSlots.length == 0}
+              className={'continue-btn'}
+              title={'Continue'}
+              onClick={onContinue}
+            />
+          </div>
+      }
     </div>
   );
 };
 
 BookingView.propTypes = {
+  isEditSlot: PropTypes.bool,
   isLoggedIn: PropTypes.bool,
+  slots: PropTypes.array,
   setPickedSlots: PropTypes.func
 };
 
 const mapStateToProps = ({ app }) => ({
   user: app.user || {},
-  isLoggedIn: app.isLoggedIn
+  isLoggedIn: app.isLoggedIn,
+  slots: app.slots
 });
 
 export default connect(mapStateToProps, {

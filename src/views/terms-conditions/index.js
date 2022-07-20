@@ -8,7 +8,6 @@ const TermsConditions = () => {
       <Seo title={''} />
       <div style={{ width: '100%', maxWidth : 800 }}>
         <h1 style={{width: '100%', textAlign: 'left'}}>
-         cc
         </h1>
       </div>
     </div>

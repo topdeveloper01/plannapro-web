@@ -8,7 +8,9 @@ const NotFound = () => {
   return (
     <div>
       <Seo title={t('web_title.not_found')} />
-      <h1>not found</h1>
+      <div className={'align-col-middle w100 h100'} style={{height: '50vh'}}>
+        <h1>Not Found</h1>
+      </div>
     </div>
   );
 };

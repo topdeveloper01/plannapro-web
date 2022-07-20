@@ -9,11 +9,11 @@ const CommonTabs = ({ items, item, className, style, onChange }) => {
   return (
     <div className={'align-middle common-tabs ' + className}>
       {items &&
-        items.map((it) => (
+        items.map((it, index) => (
           <div key={it} className={'flex_1 h100'}>
             <Button
               variant="contained"
-              className={'tab-btn ' + (it === item ? 'tab-btn-active' : 'tab-btn-inactive')}
+              className={`tab-btn tab-btn-${index} ` + (it === item ? 'tab-btn-active' : 'tab-btn-inactive')}
               style={style}
               onClick={() => {
                 onChange(it);

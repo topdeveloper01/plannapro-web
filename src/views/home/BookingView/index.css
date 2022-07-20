@@ -3,15 +3,6 @@
     flex: 1;
 }
 
-.booking-view h5 {
-    font-size: 24px;
-    line-height: 31px;
-    color: var(--color-text);
-    font-family: Lora-Bold;
-    width: 100%;
-    margin: 0;
-}
-
 .view-home .calendar-view .row{
     display: flex;
     width: 100%;
@@ -59,6 +50,23 @@
     overflow-y: auto;
 }
 
+.booking-view .cancel-btn {
+    width: 225px;
+    max-width: calc(50% - 10px);
+    height: 44px;
+    font-size: 14px !important;
+    font-family: SemplicitaPro-Medium !important;
+}
+
+.booking-view .save-btn {
+    width: 225px;
+    max-width: calc(50% - 10px);
+    height: 44px;
+    font-size: 14px !important;
+    font-family: SemplicitaPro-Medium !important;
+}
+
+
 @media (max-width: 992px) {
     .booking-view .date-picker-view {
         width: 100%;
@@ -75,12 +83,22 @@
 }
 
 @media (max-width: 768px) {
+    .booking-view .date-picker-view {
+        padding-bottom: 16px;
+    }
     .booking-view .timeslots .list {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
 
     .booking-view .timeslots p.date {
+        font-size: 14px;
         padding-left: 0;
+        margin-top: 0px;
+        margin-bottom: 16px;
+    }
+
+    .booking-view .continue-btn {
+        width: 100%;
     }
 }

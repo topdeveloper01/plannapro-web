@@ -1,8 +1,5 @@
 .view-privacy {
     margin: auto;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: var(--color-gray6);
 }
 
 .view-privacy br {

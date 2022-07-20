@@ -51,7 +51,7 @@ const ConfirmBooking = (props) => {
                 start: slot
               }}
               onEdit={() => {
-
+                navigate(ROUTES_NAMES.home + ROUTES_NAMES.editSlot + `?slot=${slot}`);
               }}
               onDelete={() => {
                 _targetSlot.current = slot;

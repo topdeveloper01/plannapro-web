@@ -39,7 +39,7 @@ const Header = ({ headerClass, toggleSideBar,  hasBorderBottom = false }) => {
           </Button>
         </div>
         <Button
-          className={'hide-sm drawerBtn'}
+          className={'drawerBtn'}
           onClick={(e) => {
             e.preventDefault();
             toggleSideBar();

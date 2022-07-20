@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import './index.css';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -8,9 +8,13 @@ import { ChevronLeft, ChevronRight } from '@styled-icons/heroicons-solid';
 import { Theme } from '../../../assets';
 
 
-const ProCalendarView = ({ minDate, onSelectDate }) => {
+const ProCalendarView = ({curDate, minDate, onSelectDate }) => {
   const [activeStartDay, setActiveStartDay] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(new Date());
+
+  useEffect(()=>{
+    setSelectedDay(curDate);
+  }, [curDate])
 
   const onChangeDate = (date) => {
     setSelectedDay(date);
@@ -48,6 +52,7 @@ const ProCalendarView = ({ minDate, onSelectDate }) => {
 };
 
 ProCalendarView.propTypes = {
+  curDate: PropTypes.object,
   minDate: PropTypes.object,
   className: PropTypes.string,
   onSelectDate: PropTypes.func
