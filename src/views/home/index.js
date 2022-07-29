@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Outlet, useParams } from 'react-router-dom';
 import './index.css';
 import Seo from '../../components/Seo';
-import { setAppHeaderClass } from '../../store/actions/app';
-import PropTypes from 'prop-types';
 import { BookingInfo } from '../../components/Home';
 import Svg_logo from '../../assets/images/app/Logo.svg';
+import { loadProInfo } from '../../store/actions/pro';
+import LoadingSpinner from '../../components/Spinner';
 
-const Home = (props) => {
+const Home = () => {
+  const dispatch = useDispatch();
+  const { pro_login } = useParams();
+  const pro = useSelector(state => state.pro);
+
   useEffect(() => {
-    // props.setAppHeaderClass('app-home-header');
-    return () => {
-      props.setAppHeaderClass('');
-    };
-  }, []);
+    dispatch(loadProInfo(pro_login));
+  }, [pro_login]);
 
   return (
     <div data-testid="view-home" className={'view-home'}>
@@ -24,28 +25,27 @@ const Home = (props) => {
           <img src={Svg_logo}/>
         </div>
         <div className={'calendar-container flex_wrap mt5'}>
-          <div className={'info-view ph2 pv3'}>
-            <BookingInfo/>
-          </div>
-          <div className={'align-col-middle calendar-view pl4 pr2 pv3'}>
-            <Outlet />
-          </div>
+          {
+            pro.isLoading ?
+              <div className={'align-col-middle flex_1'}>
+                <LoadingSpinner/>
+              </div>
+              :
+              (pro.proData?.id != null &&
+                <>
+                  <div className={'info-view ph2 pv3'}>
+                    <BookingInfo/>
+                  </div>
+                  <div className={'align-col-middle calendar-view pl4 pr2 pv3'}>
+                    <Outlet/>
+                  </div>
+                </>
+              )
+          }
         </div>
       </div>
     </div>
   );
 };
 
-Home.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  setAppHeaderClass: PropTypes.func
-};
-
-const mapStateToProps = ({ app }) => ({
-  user: app.user || {},
-  isLoggedIn: app.isLoggedIn
-});
-
-export default connect(mapStateToProps, {
-  setAppHeaderClass
-})(Home);
+export default Home;

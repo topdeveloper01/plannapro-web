@@ -16,7 +16,7 @@ const Timeslot = ({ slot, isSelected, isDisabled, className, onSelect }) => {
         }
       }}
     >
-      {moment(slot).format('h:mm A')}
+      {moment(slot.start).format('h:mm A')}
     </Button>
   );
 };

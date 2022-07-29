@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from '@styled-icons/typicons';
@@ -13,6 +13,8 @@ import { ROUTES_NAMES } from '../../../constants';
 
 const PaymentInfo = () => {
   const navigate = useNavigate();
+  const { proData } = useSelector(state => state.pro);
+
   const [state, setState] = useState({
     firstName: '',
     lastName : '',
@@ -30,7 +32,7 @@ const PaymentInfo = () => {
   }
 
   const onContinue = () => {
-    navigate(ROUTES_NAMES.home + ROUTES_NAMES.confirmBooking);
+    navigate(`/${proData?.user?.login}/` + ROUTES_NAMES.confirmBooking);
   };
 
   return (

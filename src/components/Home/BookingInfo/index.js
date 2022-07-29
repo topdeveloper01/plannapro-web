@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './index.css';
-import { setAppHeaderClass } from '../../../store/actions/app';
-import PropTypes from 'prop-types';
 import Svg_Leaves from '../../../assets/images/app/Leaves.svg';
 import Svg_time from '../../../assets/images/icons/time-icon.svg';
 import Svg_pound from '../../../assets/images/icons/pound-coin-icon.svg';
@@ -11,34 +9,32 @@ import Svg_desc from '../../../assets/images/icons/description-icon.svg';
 import { Theme } from '../../../assets';
 import MoreorlessView from '../../Common/MoreorlessView';
 import PostCode from '../../Inputs/PostCode';
+import { getRate } from '../../../utils/helper';
+import { setCurProService } from '../../../store/actions/pro';
 
+const discounts = [
+  { cnt: 1, value: 220 }, { cnt: 5, value: 210 }, { cnt: 10, value: 200 }, { cnt: 15, value: 190 },
+  { cnt: 20, value: 180 }, { cnt: 25, value: 170 }, { cnt: 30, value: 160 }, { cnt: 35, value: 150 }
+];
+const packages = ['Hedge cutting', 'Tree and shrub pruning', 'Deadheading', 'Weeding', 'Feeding plants with organic liquid feed', 'Lawn mowing', 'Jet wash of decking and paving'];
 
 const BookingInfo = () => {
-  const services = [
-    { id: 0, title: 'Ask a Pro' },
-    { id: 1, title: 'Provide a quote' },
-    { id: 2, title: 'Summer Package' },
-    { id: 3, title: 'Call Out' }
-  ];
-  const discounts = [
-    { cnt: 1, value: 220 }, { cnt: 5, value: 210 }, { cnt: 10, value: 200 }, { cnt: 15, value: 190 },
-    { cnt: 20, value: 180 }, { cnt: 25, value: 170 }, { cnt: 30, value: 160 }, { cnt: 35, value: 150 }
-  ];
-  const packages = ['Hedge cutting', 'Tree and shrub pruning', 'Deadheading', 'Weeding', 'Feeding plants with organic liquid feed', 'Lawn mowing', 'Jet wash of decking and paving']
+  const dispatch = useDispatch();
+  const pro = useSelector(state => state.pro);
+  const rate = useMemo(() => getRate(pro.curService), [pro.curService])
 
-  const [selectedService, setSelectedService] = useState(0);
-
+  console.log(pro);
   const _renderDetailsInfo = () => {
-    if (selectedService == 0 || selectedService == 1) {
+    if (pro.curService?.title == "Ask a Pro" || pro.curService == 1) {
       return (
         <>
           <div className={'align-row-start mt3'}>
             <img src={Svg_time}/>
-            <p className={'desc ml2'}>15 mins</p>
+            <p className={'desc ml2'}>{rate?.duration} mins</p>
           </div>
           <div className={'align-row-start mt3'}>
             <img src={Svg_pound}/>
-            <p className={'desc ml2'}>£50</p>
+            <p className={'desc ml2'}>£{rate?.cost}</p>
           </div>
           <div className={'align-row-start mt3'}>
             <img src={Svg_video}/>
@@ -50,7 +46,7 @@ const BookingInfo = () => {
           </div>
         </>
       );
-    } else if (selectedService == 2) { // summer package
+    } else if (pro.curService == 2) { // summer package
       return (
         <>
           <div className={'align-row-start mt3'}>
@@ -86,7 +82,7 @@ const BookingInfo = () => {
                   {
                     packages.map((item) =>
                       <div key={item} className={'align-row-start w100 mt1'}>
-                        <div className={'dot mr1'} />
+                        <div className={'dot mr1'}/>
                         <div className={'discount_value'}>{item}</div>
                       </div>
                     )
@@ -94,7 +90,7 @@ const BookingInfo = () => {
                   <div className={'align-row-start-start mt2 package-highlighted'}>
                     <div className={'mr1'}>*</div>
                     <div>
-                      We only  use organic products and avoid using any unnatural chemicals in the garden.
+                      We only use organic products and avoid using any unnatural chemicals in the garden.
                     </div>
                   </div>
                 </div>
@@ -102,7 +98,7 @@ const BookingInfo = () => {
             </div>
           </div>
           <div className={'align-row-start mt3'}>
-            <PostCode />
+            <PostCode/>
           </div>
         </>
       );
@@ -122,7 +118,7 @@ const BookingInfo = () => {
             <p className={'desc ml2'}>Home visit. Cost is for the first hour only.</p>
           </div>
           <div className={'align-row-start mt3'}>
-            <PostCode />
+            <PostCode/>
           </div>
         </>
       );
@@ -139,11 +135,13 @@ const BookingInfo = () => {
         <p>Service Needed</p>
         <div className={'w100 flex_wrap items'}>
           {
-            services.map((service) =>
+            (pro.services || []).map((service) =>
               <div key={service.id}
-                   className={service.id == selectedService ? 'service-item-active' : 'service-item-inactive'}
+                   className={service.id == pro.curService?.id ? 'service-item-active' : 'service-item-inactive'}
                    onClick={() => {
-                     setSelectedService(service.id);
+                     if (pro.services?.length > 1) {
+                       dispatch(setCurProService(service));
+                     }
                    }}
               >{service.title}</div>
             )
@@ -152,18 +150,18 @@ const BookingInfo = () => {
       </div>
       <div className={'service-detail'}>
         {
-          (selectedService == 0 || selectedService == 1) ?
-            <h5>15 minute video consulation with Cameron Macfie</h5>
+          (pro.curService?.title == "Ask a Pro" || pro.curService == 1) ?
+            <h5>{rate?.duration} minute video consulation with {pro.proData?.user?.firstName} {pro.proData?.user?.lastName}</h5>
             :
-            selectedService == 2 ?
-              <h5>Summer Garden Tidy-Up Package With Cameron Macfie</h5>
+            pro.curService == 2 ?
+              <h5>Summer Garden Tidy-Up Package With {pro.proData?.user?.firstName} {pro.proData?.user?.lastName}</h5>
               :
-              <h5>1 hour meeting with Cameron Macfie</h5>
+              <h5>1 hour meeting with {pro.proData?.user?.firstName} {pro.proData?.user?.lastName}</h5>
         }
         <div className={'align-row-start w100 pro'}>
-          <img src={'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'}/>
+          <img src={pro.proData?.user?.imageUrl}/>
           <div className={'ml2'}>
-            <h6>Cameron Macfie</h6>
+            <h6>{pro.proData?.user?.firstName} {pro.proData?.user?.lastName}</h6>
             <p>View Profile</p>
           </div>
         </div>
@@ -173,16 +171,4 @@ const BookingInfo = () => {
   );
 };
 
-BookingInfo.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  setAppHeaderClass: PropTypes.func
-};
-
-const mapStateToProps = ({ app }) => ({
-  user: app.user || {},
-  isLoggedIn: app.isLoggedIn
-});
-
-export default connect(mapStateToProps, {
-  setAppHeaderClass
-})(BookingInfo);
+export default BookingInfo;

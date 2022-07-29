@@ -1,10 +1,10 @@
-import { ACTION_TYPES } from '../../constants';
+export const AUTH_SET_LOGGED_IN = 'AUTH_SET_LOGGED_IN'
 
 export const setAsLoggedIn = () => async (dispatch) => {
   return new Promise((resolve, reject) => {
     try {
       dispatch({
-        type: ACTION_TYPES.APP_LOGGED_IN,
+        type: AUTH_SET_LOGGED_IN,
         payload: true
       });
       resolve();

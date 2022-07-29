@@ -1,5 +1,5 @@
 const ROUTES_NAMES = {
-  home: '/',
+  home: '/:pro_login',
   bookingSlots: 'slots',
   addPaymentInfo: 'payment',
   confirmBooking : 'confirm-appointment',

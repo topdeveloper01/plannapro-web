@@ -1,31 +1,56 @@
 import React, {useState, useRef} from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from '@styled-icons/typicons';
 import './index.css';
-import { setAppHeaderClass, setPickedSlots } from '../../../store/actions/app';
+import { setBookingPickedSlots } from '../../../store/actions/booking';
 import { Theme } from '../../../assets';
 import { MainBtn, RoundIconBtn, OutlineBtn } from '../../../components/Buttons';
 import { ROUTES_NAMES } from '../../../constants';
 import PickedSlot from '../../../components/Home/PickedSlot';
 import ConfirmModal from '../../../components/Modals/ConfirmModal';
+import BookingService from '../../../services/apiBooking';
+import {BOOKING_NEW} from '../../../constants/common'
+import { showAlert } from '../../../utils/alerts';
 
-const ConfirmBooking = (props) => {
+const ConfirmBooking = () => {
   const navigate = useNavigate();
-  const [isConfirmModal, showConfirmModal] = useState(false);
+  const dispatch = useDispatch();
+  const { curService, proData } = useSelector(state => state.pro);
+  const { pickedSlots } = useSelector(state => state.booking);
 
+  const [isConfirmModal, showConfirmModal] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const _targetSlot = useRef(null);
 
   const onContinue = () => {
-    navigate(ROUTES_NAMES.bookingDone);
+    let request_data = {
+      status: BOOKING_NEW,
+      description: '',
+      service: { id: curService.id },
+      slots: pickedSlots
+    }
+    console.log('booking request ', request_data)
+    setLoading(true);
+    BookingService.createBookRequest(request_data)
+      .then(({ data }) => {
+        console.log('create BookRequest ', data);
+        setLoading(false);
+        navigate(ROUTES_NAMES.bookingDone);
+      })
+      .catch((err) => {
+        setLoading(false);
+        showAlert(null, 'Something went wrong.')
+        console.log('create BookRequest err ', err);
+      });
   };
 
   const onDeleteSlot=(slot) => {
     console.log('delete slot ', slot)
-    let clone = props.slots.slice(0);
-    clone = clone.filter(s => s != slot);
-    props.setPickedSlots(clone);
+    let clone = pickedSlots.slice(0);
+    clone = clone.filter(s => s.start != slot.start);
+
+    dispatch(setBookingPickedSlots(clone));
   }
 
   return (
@@ -44,14 +69,12 @@ const ConfirmBooking = (props) => {
       </div>
       <div className={'row'}>
         {
-          props.slots.map((slot, index) =>
+          pickedSlots.map((slot, index) =>
             <PickedSlot
               key={index}
-              slot={{
-                start: slot
-              }}
+              slot={slot}
               onEdit={() => {
-                navigate(ROUTES_NAMES.home + ROUTES_NAMES.editSlot + `?slot=${slot}`);
+                navigate(`/${proData?.user?.login}/` + ROUTES_NAMES.editSlot + `?start=${slot.start}&end=${slot.end}`);
               }}
               onDelete={() => {
                 _targetSlot.current = slot;
@@ -69,6 +92,7 @@ const ConfirmBooking = (props) => {
         />
         <div style={{ width: 10 }}/>
         <MainBtn
+          isLoading={isLoading}
           className={'continue-btn'}
           title={'Send Booking Request'}
           onClick={onContinue}
@@ -88,19 +112,4 @@ const ConfirmBooking = (props) => {
   );
 };
 
-ConfirmBooking.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  slots: PropTypes.array,
-  setAppHeaderClass: PropTypes.func,
-  setPickedSlots : PropTypes.func
-};
-
-const mapStateToProps = ({ app }) => ({
-  user: app.user || {},
-  isLoggedIn: app.isLoggedIn,
-  slots: app.slots
-});
-
-export default connect(mapStateToProps, {
-  setAppHeaderClass, setPickedSlots
-})(ConfirmBooking);
+export default  ConfirmBooking ;
